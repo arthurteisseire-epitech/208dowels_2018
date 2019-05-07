@@ -1,0 +1,13 @@
+#!/usr/bin/python3
+
+import sys
+from main import main
+
+try:
+    if len(sys.argv) != 10:
+        exit(84)
+    print(sys.argv[1])
+    main([int(a) for a in sys.argv[1:]])
+except Exception as e:
+    print(e)
+    exit(84)
