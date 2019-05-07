@@ -18,7 +18,7 @@ def main(args):
     x_array = [i for i in range(0, 9)]
     prob = sum(map(lambda x: x[0] * x[1], zip(args, x_array))) / N / 100.0
     print_row(" x", x_array, "Total", "%d")
-    print_row("0x", args, "100", "%d")
+    print_row("Ox", args, "100", "%d")
     tx = list(map(lambda x: lb(N, x, prob) * 100, x_array))
     print_row("Tx", tx, "100", "%.1f")
     print("Distribution:\tB(100, %.4f)" % prob)
