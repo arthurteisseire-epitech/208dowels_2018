@@ -11,4 +11,12 @@ X2_DIST_TOT = [[0.00, 0.02, 0.06, 0.15, 0.27, 0.45, 0.71, 1.07, 1.64, 2.71, 3.84
 
 
 def main(args):
-    pass
+    print_row("x", [i for i in range(0, 9)], "Total")
+    print_row("0x", args, "100")
+    print_row("Tx", args, "100")
+
+
+def print_row(prefix, array, suffix):
+    print("  %s" % prefix, end="\t| ")
+    print(*array, sep="\t| ", end="\t")
+    print("| %s" % suffix)
