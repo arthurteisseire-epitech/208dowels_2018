@@ -33,8 +33,8 @@ def print_arrays(args, tx):
 
 
 def modify_arrays(range_array, args, tx):
-    for i in range(len(range_array)):
-        if args[i] < 10 and args[i + 1] < 10:
+    for i in range(len(range_array) - 1):
+        if args[i] < 10 or args[i + 1] < 10:
             range_array = range_array[:i] + [[range_array[i][0], range_array[i + 1][-1]]] + range_array[i + 2:]
             args = args[:i] + [args[i] + args[i + 1]] + args[i + 2:]
             tx = tx[:i] + [tx[i] + tx[i + 1]] + tx[i + 2:]
