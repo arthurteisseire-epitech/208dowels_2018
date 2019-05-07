@@ -20,7 +20,7 @@ def main(args):
     print_row(" x", x_array, "Total", "%d")
     print_row("0x", args, "100", "%d")
     tx = list(map(lambda x: lb(N, x, prob) * 100, x_array))
-    print_row("Tx", tx, "100", "%.2f")
+    print_row("Tx", tx, "100", "%.1f")
     print("Distribution:\tB(100, %.4f)" % prob)
 
 
