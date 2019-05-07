@@ -4,7 +4,7 @@ import sys
 from main import main
 
 try:
-    if len(sys.argv) != 10:
+    if len(sys.argv) != 10 or sum(map(lambda x: int(x), sys.argv[1:])) != 100:
         exit(84)
     main([int(a) for a in sys.argv[1:]])
 except Exception as e:
