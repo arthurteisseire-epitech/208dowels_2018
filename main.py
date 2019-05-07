@@ -18,7 +18,8 @@ X2_DIST_TOT = [[0.00, 0.02, 0.06, 0.15, 0.27, 0.45, 0.71, 1.07, 1.64, 2.71, 3.84
 def main(args):
     x_array = [i for i in range(0, 9)]
     prob = sum(map(lambda x: x[0] * x[1], zip(args, x_array))) / N / 100.0
-    tx = list(map(lambda x: lb(N, x, prob) * 100, x_array))
+    tx = list(map(lambda x: lb(N, x, prob) * 100, x_array[:-1]))
+    tx.append(100 - sum(tx))
 
     print_arrays(args, tx)
     print("Distribution:\tB(100, %.4f)" % prob)
