@@ -1,3 +1,7 @@
+import math
+
+N = 100.0
+
 X2_DIST_TOT = [[0.00, 0.02, 0.06, 0.15, 0.27, 0.45, 0.71, 1.07, 1.64, 2.71, 3.84, 5.41, 6.63],
                [0.02, 0.21, 0.45, 0.71, 1.02, 1.39, 1.83, 2.41, 3.22, 4.61, 5.99, 7.82, 9.21],
                [0.11, 0.58, 1.01, 1.42, 1.87, 2.37, 2.95, 3.66, 4.64, 6.25, 7.81, 9.84, 11.34],
@@ -11,12 +15,24 @@ X2_DIST_TOT = [[0.00, 0.02, 0.06, 0.15, 0.27, 0.45, 0.71, 1.07, 1.64, 2.71, 3.84
 
 
 def main(args):
-    print_row("x", [i for i in range(0, 9)], "Total")
-    print_row("0x", args, "100")
-    print_row("Tx", args, "100")
+    x_array = [i for i in range(0, 9)]
+    prob = sum(map(lambda x: x[0] * x[1], zip(args, x_array))) / N / 100.0
+    print_row(" x", x_array, "Total", "%d")
+    print_row("0x", args, "100", "%d")
+    tx = list(map(lambda x: lb(N, x, prob) * 100, x_array))
+    print_row("Tx", tx, "100", "%.2f")
+    print("Distribution:\tB(100, %.4f)" % prob)
 
 
-def print_row(prefix, array, suffix):
+def print_row(prefix, array, suffix, format):
     print("  %s" % prefix, end="\t| ")
-    print(*array, sep="\t| ", end="\t")
-    print("| %s" % suffix)
+    for x in array:
+        print(format % x, end="\t| ")
+    print("%s" % suffix)
+
+
+def lb(n, k, p):
+    proba_ok = pow(p, k)
+    proba_ko = pow(1 - p, n - k)
+    comb = math.factorial(n) / (math.factorial(k) * math.factorial(n - k))
+    return proba_ok * proba_ko * comb
