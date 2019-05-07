@@ -25,7 +25,7 @@ def main(args):
 
 
 def lb(n, k, p):
-    proba_ok = pow(p, k)
-    proba_ko = pow(1 - p, n - k)
+    prob_ok = pow(p, k)
+    prob_ko = pow(1 - p, n - k)
     comb = math.factorial(n) / (math.factorial(k) * math.factorial(n - k))
-    return proba_ok * proba_ko * comb
+    return prob_ok * prob_ko * comb
