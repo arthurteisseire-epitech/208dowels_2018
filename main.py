@@ -45,11 +45,12 @@ def modify_arrays(range_array, args, tx):
 
 def range_array_to_string_array(range_array):
     string_array = []
-    for i in range_array:
-        if len(i) > 1:
-            string_array.append(str(i[0]) + "-" + str(i[-1]))
+    for i in range(0, len(range_array) - 1):
+        if len(range_array[i]) > 1:
+            string_array.append(str(range_array[i][0]) + "-" + str(range_array[i][-1]))
         else:
-            string_array.append(str(i[0]))
+            string_array.append(str(range_array[i][0]))
+    string_array.append(str(range_array[-1][0]) + "+")
     return string_array
 
 
