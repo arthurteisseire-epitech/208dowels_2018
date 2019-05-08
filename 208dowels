@@ -3,9 +3,20 @@
 import sys
 from main import main
 
+
+def positive_int(s):
+    i = int(s)
+    if i < 0:
+        raise Exception("arg '" + s + "' must be > 0")
+    return i
+
+
 try:
-    if len(sys.argv) != 10 or sum(map(lambda x: int(x), sys.argv[1:])) != 100:
-        exit(84)
+    if len(sys.argv) != 10:
+        raise Exception("need 9 arguments")
+    args = [positive_int(a) for a in sys.argv[1:]]
+    if sum(args) != 100:
+        raise Exception("sum of args must be equal to 100")
     main([int(a) for a in sys.argv[1:]])
 except Exception as e:
     print(e)
