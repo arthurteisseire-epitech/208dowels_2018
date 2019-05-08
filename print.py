@@ -19,8 +19,8 @@ def print_all(args, tx, prob):
     degrees_of_freedom = len(merged_x) - 2
 
     print_row(" x", merged_x, "Total", "%s")
-    print_row("Ox", args, "100", "%d")
-    print_row("Tx", tx, "100", "%.1f")
+    print_row("Ox", merged_args, "100", "%d")
+    print_row("Tx", merged_tx, "100", "%.1f")
     print("Distribution:\t\tB(100, %.4f)" % prob)
     print("Chi-squared:\t\t%.3f" % chi_squared)
     print("Degrees of freedom:\t%d" % degrees_of_freedom)
