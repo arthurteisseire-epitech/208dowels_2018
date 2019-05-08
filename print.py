@@ -5,6 +5,7 @@ def print_all(args, tx, prob):
     print("Distribution:\t\tB(100, %.4f)" % prob)
     print("Chi-squared:\t\t%.3f" % chi_squared)
     print("Degrees of freedom:\t%d" % (len(merged_x) - 2))
+    print("Fit validity:\t\t%s" % "Not implemented")
 
 
 def merge_arrays(args, tx):
