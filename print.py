@@ -1,4 +1,13 @@
-def print_arrays(args, tx):
+def print_all(args, tx, prob):
+    merged_x, merged_args, merged_tx = merge_arrays(args, tx)
+    chi_squared = sum(map(lambda x: pow(x[0] - x[1], 2) / x[1], zip(merged_args, merged_tx)))
+
+    print("Distribution:\t\tB(100, %.4f)" % prob)
+    print("Chi-squared:\t\t%.3f" % chi_squared)
+    print("Degrees of freedom:\t%d" % (len(merged_x) - 2))
+
+
+def merge_arrays(args, tx):
     range_array = [[i] for i in range(0, 9)]
     range_array, args, tx = merge_both_inferior(range_array, args, tx)
     range_array, args, tx = merge_one_inferior(range_array, args, tx)
@@ -6,6 +15,7 @@ def print_arrays(args, tx):
     print_row(" x", range_array, "Total", "%s")
     print_row("Ox", args, "100", "%d")
     print_row("Tx", tx, "100", "%.1f")
+    return range_array, args, tx
 
 
 def merge_both_inferior(range_array, args, tx):

@@ -1,5 +1,5 @@
 import math
-from print import print_arrays
+from print import print_all
 
 N = 100.0
 
@@ -21,8 +21,7 @@ def main(args):
     tx = list(map(lambda x: lb(N, x, prob) * 100, x_array[:-1]))
     tx.append(100 - sum(tx))
 
-    print_arrays(args, tx)
-    print("Distribution:\tB(100, %.4f)" % prob)
+    print_all(args, tx, prob)
 
 
 def lb(n, k, p):
