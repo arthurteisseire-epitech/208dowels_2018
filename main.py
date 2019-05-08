@@ -3,6 +3,7 @@ from print import print_all
 
 N = 100.0
 
+
 def main(args):
     x_array = [i for i in range(0, 9)]
     prob = sum(map(lambda x: x[0] * x[1], zip(args, x_array))) / N / 100.0
