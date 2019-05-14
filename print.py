@@ -30,7 +30,7 @@ def print_all(args, tx, prob):
 def get_validity(degrees_of_freedom, chi_squared):
     idx = 0
     for i in DIST_TABLE[degrees_of_freedom]:
-        if i > chi_squared:
+        if i >= chi_squared:
             break
         idx += 1
     if idx != 0:
