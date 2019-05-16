@@ -24,7 +24,7 @@ def print_all(args, tx, prob):
     print("Distribution:\t\tB(100, %.4f)" % prob)
     print("Chi-squared:\t\t%.3f" % chi_squared)
     print("Degrees of freedom:\t%d" % degrees_of_freedom)
-    print("Fit validity:\t\t%s" % get_validity(degrees_of_freedom, chi_squared))
+    print("Fit validity:\t\t%s" % get_validity(1, 0))
 
 
 def get_validity(degrees_of_freedom, chi_squared):
@@ -33,14 +33,14 @@ def get_validity(degrees_of_freedom, chi_squared):
         if i >= chi_squared:
             break
         idx += 1
-    if idx != 0:
-        idx -= 1
+    if idx >= len(DIST_TABLE[0]):
+        idx = len(DIST_TABLE[0]) - 1
     perc = DIST_TABLE[0][idx]
     if perc == 99:
         return "P > " + str(perc) + "%"
     elif perc == 1:
         return "P < " + str(perc) + "%"
-    return str(DIST_TABLE[0][idx + 1]) + "% < P < " + str(perc) + "%"
+    return str(perc) + "% < P < " + str(DIST_TABLE[0][idx - 1]) + "%"
 
 
 def merge_arrays(args, tx):
