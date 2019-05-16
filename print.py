@@ -24,7 +24,7 @@ def print_all(args, tx, prob):
     print("Distribution:\t\tB(100, %.4f)" % prob)
     print("Chi-squared:\t\t%.3f" % chi_squared)
     print("Degrees of freedom:\t%d" % degrees_of_freedom)
-    print("Fit validity:\t\t%s" % get_validity(1, 0))
+    print("Fit validity:\t\t%s" % get_validity(degrees_of_freedom, chi_squared))
 
 
 def get_validity(degrees_of_freedom, chi_squared):
